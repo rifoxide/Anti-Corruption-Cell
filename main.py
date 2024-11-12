@@ -1,12 +1,9 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Request
-from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
 
 from routes import signup, login, logout, userinfo
 
-# Load environment variables
-load_dotenv()
 
 app = FastAPI()
 

@@ -1,5 +1,9 @@
 import os
 import mysql.connector
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Database configuration
 DB_CONFIG = {
@@ -9,6 +13,7 @@ DB_CONFIG = {
     "database": os.getenv("DATABASE_NAME"),
 }
 
+print(DB_CONFIG)
 
 def get_db_connection():
     """Establish and return a MySQL connection"""

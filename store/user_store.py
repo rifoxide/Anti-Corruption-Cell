@@ -20,9 +20,11 @@ def create_user(username: str, password: str):
 def get_user_by_username(username: str):
     """Fetch user data from the database"""
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
-    user = cursor.fetchone()
+    cursor = conn.cursor(dictionary=True)  # Use dictionary=True to get results as a dict
+    query = "SELECT id, username, email, password FROM users WHERE username = %s"
+    cursor.execute(query, (username,))
+    user = cursor.fetchone()  # Fetch the first matching row
+
     cursor.close()
     conn.close()
     return user
